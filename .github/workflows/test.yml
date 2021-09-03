@@ -1,0 +1,22 @@
+name: Build and Deploy to STAGE
+
+on:
+  push:
+    tags:
+      - '*.*.*'     
+                                               
+jobs:
+  build-deploy:
+    name: Build and Deploy to STAGE Environment
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: ImageTag
+        id: image-tag
+        run: |
+          TAG="${GITHUB_REF#refs/*/}"
+          echo $TAG
+          echo ::set-output name=tag::${TAG}
