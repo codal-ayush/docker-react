@@ -1,9 +1,9 @@
 name: Build and Deploy to STAGE
 
 on:
-  push:
-    tags:
-      - '*.*.*'     
+  release:
+    types: 
+      - created     
                                                
 jobs:
   build-deploy:
